@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class Main {
     //Character (player) constructor
-    private Character character = new Character ("Conan", 150, 200, 1, 1, 3, 1, 2, 0, false, false);
+    private Character character = new Character ("Conan", 150, 30, 1, 1, 3, 1, 2, 0, false, false);
     private Weapon currentWeapon = new Weapon("Basic Sword", 1, 30, 0, true);
 
     // Final boss constructor
