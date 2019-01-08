@@ -3,18 +3,18 @@ package AdventureGame;
 import java.util.Random;
 
 public class Potion extends Item {
-    private String name; //the name of the item.
+
     private int dropChance;
     private int healingAmount = 30;
     private String unit;
 
-    public Potion(String name, int dropChance, int healingAmount, String unit, int price) {
-        setName(name);
+    public Potion (String name, int dropChance, int healingAmount, String unit, int price) {
+        super(name, price);
         setDropChance(dropChance);
         setHealingAmount(healingAmount);
         setUnit(unit);
-        setPrice(price);
     }
+
 
     public Character usePotion(Character character) {
         if (character.getNumberOfHealthPotions() <= 0) {
@@ -36,19 +36,30 @@ public class Potion extends Item {
         int randomNumber = rand.nextInt(100) + 1;
         if (randomNumber <= potion.getDropChance() ) {
             character.setNumberOfHealthPotions(character.getNumberOfHealthPotions() + 1);
+            Potion.printPotion();
             System.out.printf("You found a health potion on the floor! You now have %s health potions.\n", character.getNumberOfHealthPotions());
             foundSomething = true;
         }
         return foundSomething;
     }
 
-    public String getName() {
-        return name;
+    public static void printPotion() {
+        System.out.println("" +
+                "      _____\n" +
+                "     `.___,'\n" +
+                "      (___)\n" +
+                "      <   >\n" +
+                "       ) (\n" +
+                "      /`-.\\\n" +
+                "     /     \\\n" +
+                "    / _    _\\\n" +
+                "   :,' `-.' `:\n" +
+                "   |         |\n" +
+                "   :         ;\n" +
+                "    \\       /\n" +
+                "     `.___.' \n");
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getDropChance() {
         return dropChance;

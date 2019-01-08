@@ -8,12 +8,12 @@ public class Combat {
         int randomAttack = 0;
         System.out.println("YOUR TURN:");
 
-        if (currentWeapon.getAttackRate() == 1 && !(currentEnemy.getHealth() <= 0)) {
+        if (currentWeapon.getAttackSpeed() == 1 && !(currentEnemy.getHealth() <= 0)) {
             randomAttack = rand.nextInt(10) + character.getAttackDamage();
             currentEnemy.setHealth(currentEnemy.getHealth() - randomAttack);
             System.out.printf("You have dealt %s damage.\n", randomAttack);
         }
-        if (currentWeapon.getAttackRate() == 2 && !(currentEnemy.getHealth() <= 0)) {
+        if (currentWeapon.getAttackSpeed() == 2 && !(currentEnemy.getHealth() <= 0)) {
             randomAttack = rand.nextInt(10) + character.getAttackDamage();
             currentEnemy.setHealth(currentEnemy.getHealth() - randomAttack);
             System.out.printf("You have dealt %s damage.\n", randomAttack);
@@ -23,7 +23,7 @@ public class Combat {
 
 
         }
-        else if (currentWeapon.getAttackRate() == 3 && !(currentEnemy.getHealth() <= 0)) {
+        else if (currentWeapon.getAttackSpeed() == 3 && !(currentEnemy.getHealth() <= 0)) {
             randomAttack = rand.nextInt(10) + character.getAttackDamage();
             currentEnemy.setHealth(currentEnemy.getHealth() - randomAttack);
             System.out.printf("You have dealt %s damage.\n", randomAttack);

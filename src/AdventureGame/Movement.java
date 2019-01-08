@@ -5,24 +5,24 @@ import java.util.Scanner;
 public class Movement {
 
     public void availableDirections(Character character) {
-        System.out.println("You can move in the following directions: ");
+        System.out.println("Use letters N, S, E, W to move around. You can move in the following directions: ");
 
 
         if (!(character.getCurrentY() + 1 > 4) && Room.isEmpty(character.getCurrentX(), character.getCurrentY() + 1)) { // North
-            System.out.printf("[N]");
+            System.out.printf("North:[N]  ");
         }
 
         if (!(character.getCurrentY() - 1 < 1) && Room.isEmpty(character.getCurrentX(), character.getCurrentY() - 1)) { // South
-            System.out.printf("[S]");
+            System.out.printf("South:[S]  ");
         }
-
-        if (!(character.getCurrentX() - 1 < 1) && Room.isEmpty(character.getCurrentX() - 1, character.getCurrentY())) { // West
-            System.out.printf("[W]");
-        }
-
         if (!(character.getCurrentX() + 1 > 6) && Room.isEmpty(character.getCurrentX() + 1, character.getCurrentY())) { // East
-            System.out.printf("[E]");
+            System.out.printf("East:[E]  ");
         }
+        if (!(character.getCurrentX() - 1 < 1) && Room.isEmpty(character.getCurrentX() - 1, character.getCurrentY())) { // West
+            System.out.printf("West:[W]  ");
+        }
+
+
 
         System.out.println(); // Extra line for formatting
     }
@@ -70,7 +70,6 @@ public class Movement {
 
             if (direction.equals("N") || direction.equals("n")) {
                 if (moveNorth(character, dragonBoss) == false ) {
-                    System.out.println("Error, can't go further north.");
 
                 }
                 else {
@@ -80,7 +79,6 @@ public class Movement {
             }
             else if(direction.equals("S") || direction.equals("s")) {
                 if (moveSouth(character, dragonBoss) == false ) {
-                    System.out.println("Error, can't go further south.");
 
                 }
                 else {
@@ -90,7 +88,6 @@ public class Movement {
             }
             else if (direction.equals("W") || direction.equals("w")) {
                 if (moveWest(character, dragonBoss) == false ) {
-                    System.out.println("Error, can't go further west.");
 
                 }
                 else {
@@ -100,7 +97,6 @@ public class Movement {
             }
             else if (direction.equals("E") || direction.equals("e")) {
                 if (moveEast(character, dragonBoss) == false ) {
-                    System.out.println("Error, can't go further east.");
 
                 }
                 else {
@@ -135,7 +131,7 @@ public class Movement {
 
         else {
             if (character.isTestingRoute() == false) {
-                System.out.println("Error, can't go further north.");
+                System.out.println("Error, can't go further north.\n");
             }
             isPossible = false;
             isPossible = false;
@@ -162,7 +158,7 @@ public class Movement {
 
         else {
             if (character.isTestingRoute() == false) {
-                System.out.println("Error, can't go further south.");
+                System.out.println("Error, can't go further south.\n");
             }
             isPossible = false;
             isPossible = false;
@@ -188,7 +184,7 @@ public class Movement {
 
         else {
             if (character.isTestingRoute() == false) {
-                System.out.println("Error, can't go further west.");
+                System.out.println("Error, can't go further west.\n");
             }
             isPossible = false;
             isPossible = false;
@@ -214,7 +210,7 @@ public class Movement {
 
         else {
             if (character.isTestingRoute() == false) {
-                System.out.println("Error, can't go further east.");
+                System.out.println("Error, can't go further east.\n");
             }
             isPossible = false;
         }

@@ -44,10 +44,13 @@ public class Character extends Being {
         int potionChance = rand.nextInt(100) + 1;
         if (potionChance > 50) {
             character.setNumberOfHealthPotions(character.getNumberOfHealthPotions() + 1);
+            Potion.printPotion();
             System.out.printf("You loot a health potion from the enemy. You now have %s health potions.\n", character.getNumberOfHealthPotions());
         }
 
     }
+
+
 
     public int getNumberOfHealthPotions() {
         return numberOfHealthPotions;

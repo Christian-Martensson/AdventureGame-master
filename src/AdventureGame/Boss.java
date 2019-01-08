@@ -17,7 +17,7 @@ public class Boss extends Enemy {
     public static Boss spawnBoss() {
         Random rand = new Random();
         int yCoordinate = rand.nextInt(4) + 1;
-        Boss dragonBoss = new Boss("Dragon", 200, 50, 1,2, 6, yCoordinate, 100);
+        Boss dragonBoss = new Boss("Dragon", 250, 50, 1,2, 6, yCoordinate, 100);
 
         Room.getRoomWith(6, yCoordinate).setRoom(true);
 

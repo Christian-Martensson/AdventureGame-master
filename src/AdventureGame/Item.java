@@ -3,8 +3,13 @@ package AdventureGame;
 public class Item {
 
     private String name; //the name of the item.
-    private int dropChance; //the chance that a monster may drop this item
     private int price;
+
+    public Item (String name, int price) {
+        setName(name);
+
+        setPrice(price);
+    }
 
     public String getName() {
         return name;
@@ -14,13 +19,6 @@ public class Item {
         this.name = name;
     }
 
-    public int getDropChance() {
-        return dropChance;
-    }
-
-    public void setDropChance(int dropChance) {
-        this.dropChance = dropChance;
-    }
 
     public int getPrice() {
         return price;

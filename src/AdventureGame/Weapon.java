@@ -3,25 +3,27 @@ import java.util.Scanner;
 
 public class Weapon extends Item {
 
-    private double attackRate;
+    private double attackSpeed;
+    private String attackSpeedWord;
     private int attackDamage;
     private boolean equipped;
 
 
-    public Weapon(String name, double attackRate, int attackDamage, int price, boolean equipped) {
-        setName(name);
-        setAttackRate(attackRate);
+    public Weapon(String name, double attackSpeed, int attackDamage, int price, boolean equipped, String attackSpeedWord) {
+        super(name, price);
+        setAttackSpeed(attackSpeed);
         setAttackDamage(attackDamage);
-        setPrice(price);
         setEquipped(equipped);
+        setAttackSpeedWord(attackSpeedWord);
     }
 
-    public double getAttackRate() {
-        return attackRate;
+
+    public double getAttackSpeed() {
+        return attackSpeed;
     }
 
-    public void setAttackRate(double attackRate) {
-        this.attackRate = attackRate;
+    public void setAttackSpeed(double attackSpeed) {
+        this.attackSpeed = attackSpeed;
     }
 
     public int getAttackDamage() {
@@ -40,9 +42,9 @@ public class Weapon extends Item {
 
         int menuChoice = 0;
 
-        Weapon maceOfDoom = new Weapon("The Mace of DOOM", 1, 60, 100, false);
-        Weapon katana = new Weapon("Katana", 3, 15, 50, false);
-        Weapon swordOfArthur = new Weapon("The Sword of Arthur",2, 30,60,false);
+        Weapon maceOfDoom = new Weapon("The Mace of DOOM", 1, 80, 100, false, "normal");
+        Weapon katana = new Weapon("The Katana", 3, 15, 50, false, "triple");
+        Weapon swordOfArthur = new Weapon("The Sword of Arthur",2, 30,70,false, "double");
 
         while (switchLoop) {
             boolean tryCatchLoop = true;
@@ -53,9 +55,11 @@ public class Weapon extends Item {
                     else {
                         System.out.printf("You have %s coins.\n", character.getCoins());
                     }
-                    System.out.printf("You may buy the following weapons: \n1. %s: %s \n2. %s: %s \n3. %s: %s\n4. %s: %s\n5. Exit menu\n",
-                            maceOfDoom.getName(), maceOfDoom.getPrice(), katana.getName(), katana.getPrice(),
-                            swordOfArthur.getName(),swordOfArthur.getPrice(), potion.getName(), potion.getPrice());
+                    System.out.printf("You may buy the following items: \n1. %s: %s Gold (%s Attack Damage, %s Attack Speed)\n2. %s: %s Gold (%s Attack Damage, %s Attack Speed)\n3. %s: %s Gold (%s Attack Damage, %s Attack Speed)\n4. %s: %s Gold\n5. Exit menu\n",
+                            maceOfDoom.getName(), maceOfDoom.getPrice(), maceOfDoom.getAttackDamage(), maceOfDoom.getAttackSpeedWord(),
+                            katana.getName(), katana.getPrice(), katana.getAttackDamage(), katana.getAttackSpeedWord(),
+                            swordOfArthur.getName(),swordOfArthur.getPrice(), swordOfArthur.getAttackDamage(), swordOfArthur.getAttackSpeedWord(),
+                            potion.getName(), potion.getPrice());
                     menuChoice = input.nextInt();
                     tryCatchLoop = false;
                 }catch (Exception e) {
@@ -65,12 +69,16 @@ public class Weapon extends Item {
                 }
             }
 
-            switch (menuChoice) {
+            switch (menuChoice) { // Mace of doom
                 case 1: {
                     if (character.getCoins() < maceOfDoom.getPrice()) {
                         System.out.println("Insufficient funds");
                         switchLoop = false;
                         break;
+                    }
+                    else if (currentWeapon.getName().equals("The Mace of DOOM")) {
+                        System.out.println("You already have this weapon");
+                        switchLoop = false;
                     }
                     else {
                         character.setCoins(character.getCoins() - maceOfDoom.getPrice());
@@ -82,11 +90,15 @@ public class Weapon extends Item {
                     }
                     break;
                 }
-                case 2: {
+                case 2: { // Katana
                     if (character.getCoins() < katana.getPrice()) {
                         System.out.println("Insufficient funds");
                         switchLoop = false;
                         break;
+                    }
+                    else if (currentWeapon.getName().equals("The Katana")) {
+                        System.out.println("You already have this weapon");
+                        switchLoop = false;
                     }
                     else {
                         character.setCoins(character.getCoins() - katana.getPrice());
@@ -100,11 +112,15 @@ public class Weapon extends Item {
                     break;
 
                 }
-                case 3: {
+                case 3: { // Sword of Arthur
                     if (character.getCoins() < swordOfArthur.getPrice()) {
                         System.out.println("Insufficient funds");
                         switchLoop = false;
                         break;
+                    }
+                    else if (currentWeapon.getName().equals("Sword of Arthur")) {
+                        System.out.println("You already have this weapon");
+                        switchLoop = false;
                     }
                     else {
                         character.setCoins(character.getCoins() - swordOfArthur.getPrice());
@@ -144,10 +160,10 @@ public class Weapon extends Item {
     }
 
     public void equipWeapon(Weapon currentWeapon, Character character) {
-        character.setAttackRate(currentWeapon.getAttackRate()); //set character attackRate to weapon attackRate
+        character.setAttackRate(currentWeapon.getAttackSpeed()); //set character attackSpeed to weapon attackSpeed
         character.setAttackDamage(currentWeapon.getAttackDamage()); //set character attackDamage to weapon attackDamaage
         currentWeapon.setEquipped(true);
-        System.out.printf("You have equipped %s, you now have %s AD and %s AR.\n", currentWeapon.getName(), character.getAttackDamage(), character.getAttackRate());
+        System.out.printf("You have equipped %s, you now have %s Attack Damage and %s Attack Speed.\n", currentWeapon.getName(), character.getAttackDamage(), character.getAttackRate());
 
     }
 
@@ -157,5 +173,13 @@ public class Weapon extends Item {
 
     public void setEquipped(boolean equipped) {
         this.equipped = equipped;
+    }
+
+    public String getAttackSpeedWord() {
+        return attackSpeedWord;
+    }
+
+    public void setAttackSpeedWord(String attackSpeedWord) {
+        this.attackSpeedWord = attackSpeedWord;
     }
 }

@@ -44,5 +44,56 @@ public class Enemy extends Being {
     public void setGoldCoinLoot(int goldCoinLoot) {
         this.goldCoinLoot = goldCoinLoot;
     }
+
+    public void printSkeleton () {
+        System.out.println("" +
+                "      .-.\n" +
+                "     (o.o)\n" +
+                "      |=|\n" +
+                "     __|__\n" +
+                "   //.=|=.\\\\\n" +
+                "  // .=|=. \\\\\n" +
+                "  \\\\ .=|=. //\n" +
+                "   \\\\(_=_)//\n" +
+                "    (:| |:)\n" +
+                "     || ||\n" +
+                "     () ()\n" +
+                "     || ||\n" +
+                "     || ||\n" +
+                "    ==' '==");
+    }
+    public void printZombie() {
+        System.out.println("" +
+                "\n" +
+                "                                (()))\n" +
+                "                               /|x x|\n" +
+                "                              /\\( - )\n" +
+                "                      ___.-._/\\/\n" +
+                "                     /=`_'-'-'/  !!\n" +
+                "                     |-{-_-_-}     !\n" +
+                "                     (-{-_-_-}    !\n" +
+                "                      \\{_-_-_}   !\n" +
+                "                       }-_-_-}\n" +
+                "                       {-_|-_}\n" +
+                "                       {-_|_-}\n" +
+                "                       {_-|-_}\n" +
+                "                       {_-|-_}\n" +
+                "                   ____%%@ @%%_______");
+    }
+
+    public void printWarrior() {
+        System.out.println("" +
+                "\n     ,/|\" "+
+                "\n     //&')" +
+                "\n     '')(" +
+                "\n      (( )" +
+                "\n      )( (" +
+                "\n      (=M=[)###########>" +
+                "\n      (( )" +
+                "\n      (( )_" +
+                "\n      ((__,)" +
+                "");
+
+    }
 }
 
